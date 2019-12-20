@@ -1,32 +1,60 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:shop/main.dart';
+import 'package:shop/services/games.dart';
 
 class ProductDetails extends StatefulWidget{
-  final product_detail_name;
-  final product_detail_price;
-  final product_detail_old_price;
-  final product_detail_picture;
+  final header;
+  final prod_id;
 
   ProductDetails({
-    this.product_detail_name,
-    this.product_detail_price,
-    this.product_detail_old_price,
-    this.product_detail_picture
+    this.header,
+    this.prod_id,
   });
 
   @override
   ProductDetailsState createState()=> ProductDetailsState();
 }
 
-
 class ProductDetailsState extends State<ProductDetails>{
+
+  var picture;
+  var desc;
+  var name;
+  var price;
+  var plt;
+  var cat;
+  var describ;
+
+  getData() async{
+    var id_ = widget.prod_id;
+    var response = await (GameDetails().GetGame(id_.toString(), widget.header));
+    print(response);
+    var detail = response['games'];
+    picture = detail['picture'];
+    name = detail['name'];
+    price = detail['price'];
+    cat = detail['gameCat']['c_name'];
+    plt = detail['gamePlt']['name'];
+    describ = detail['describ'];
+    print('data : ');
+    print(name);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
-
     return new Scaffold(
       appBar: new AppBar(
         elevation: 0.1,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.deepPurple,
         title: new InkWell(
             onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> new HomePage()));},
             child: new Text('1266 GameShop')
@@ -42,19 +70,16 @@ class ProductDetailsState extends State<ProductDetails>{
             child: GridTile(
               child: new Container(
                   color: Colors.white70,
-                  child: new Image.asset(widget.product_detail_picture)
+                  child: new Image.network(picture, headers: widget.header)
               ),
               footer: new Container(
                 color: Colors.white70,
                 child: ListTile(
-                  leading: new Text(widget.product_detail_name, style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),),
+                  leading: new Text('قیمت : ', style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),),
                   title: new Row(
                     children: <Widget>[
                       new Expanded(
-                        child: new Text(widget.product_detail_old_price, style: new TextStyle(color: Colors.grey, decoration: TextDecoration.lineThrough, fontWeight: FontWeight.bold, fontSize: 16.0),),
-                      ),
-                      new Expanded(
-                        child: new Text(widget.product_detail_price, style: new TextStyle(color: Colors.red, decoration: TextDecoration.lineThrough, fontWeight: FontWeight.bold, fontSize: 16.0),),
+                        child: new Text(this.price.toString(), style: new TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold, fontSize: 16.0),),
                       ),
                     ],
                   ),
@@ -71,7 +96,7 @@ class ProductDetailsState extends State<ProductDetails>{
                         context: context,
                         builder: (context){
                           return new AlertDialog(
-                            title: new Text('Count'),
+                            title: new Text('تعداد'),
                             content: new Text('please set the count'),
                             actions: <Widget>[
                               new MaterialButton(
@@ -90,7 +115,7 @@ class ProductDetailsState extends State<ProductDetails>{
                     child: new Row(
                       children: <Widget>[
                         new Expanded(
-                          child: new Text('count', style: new TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),),
+                          child: new Text('تعداد', style: new TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),),
                         ),
                         new Expanded(
                           child: new Icon(Icons.arrow_drop_down),
@@ -125,7 +150,7 @@ class ProductDetailsState extends State<ProductDetails>{
                     child: new Row(
                       children: <Widget>[
                         new Expanded(
-                          child: new Text('region', style: new TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),),
+                          child: new Text('ریجن', style: new TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),),
                         ),
                         new Expanded(
                           child: new Icon(Icons.arrow_drop_down),
@@ -141,35 +166,35 @@ class ProductDetailsState extends State<ProductDetails>{
               new Expanded(
                   child: MaterialButton(
                       onPressed: (){},
-                      color: Colors.red,
+                      color: Colors.deepPurple,
                       elevation: 0.2,
                       textColor: Colors.white,
-                      child: new Text('Buy Now !', style: TextStyle(fontWeight: FontWeight.bold))
+                      child: new Text('اضافه کردن به سبد', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))
                   )
               ),
-              new IconButton(icon : Icon(Icons.add_shopping_cart, color: Colors.red,), onPressed: (){}),
-              new IconButton(icon : Icon(Icons.favorite_border, color: Colors.red,), onPressed: (){})
+              new IconButton(icon : Icon(Icons.add_shopping_cart, color: Colors.deepPurple,), onPressed: (){}),
+              new IconButton(icon : Icon(Icons.favorite_border, color: Colors.deepPurple,), onPressed: (){})
             ],
           ),
           new Divider(
-              color: Colors.red
+              color: Colors.deepPurple
           ),
           new ListTile(
-            title: new Text('Product Details'),
-            subtitle: new Text(" is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"),
+            title: new Text('نام بازی : ${name}'),
+            subtitle: new Text(utf8.decode(describ.toString().codeUnits), style: new TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),),
           ),
           new Divider(
-              color: Colors.red
+              color: Colors.deepPurple
           ),
           new Row(
             children: <Widget>[
               new Padding(
                 padding: const EdgeInsets.fromLTRB(12.0, 5.0, 5.0, 5.0),
-                child: new Text('Product Name', style: TextStyle(color: Colors.grey),),
+                child: new Text('نام محصول', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
               ),
               new Padding(
                   padding: EdgeInsets.all(5.0),
-                  child: new Text(widget.product_detail_name)
+                  child: new Text(this.name, style : new TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20))
               )
             ],
           ),
@@ -179,11 +204,11 @@ class ProductDetailsState extends State<ProductDetails>{
             children: <Widget>[
               new Padding(
                 padding: const EdgeInsets.fromLTRB(12.0, 5.0, 5.0, 5.0),
-                child: new Text('Product Brand', style: TextStyle(color: Colors.grey),),
+                child: new Text('پلتفرم :', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
               ),
               new Padding(
                   padding: EdgeInsets.all(5.0),
-                  child: new Text('ubisoft')
+                  child: new Text(plt, style: new TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20))
               )
             ],
           ),
@@ -192,22 +217,22 @@ class ProductDetailsState extends State<ProductDetails>{
             children: <Widget>[
               new Padding(
                 padding: const EdgeInsets.fromLTRB(12.0, 5.0, 5.0, 5.0),
-                child: new Text('Product Condition', style: TextStyle(color: Colors.grey),),
+                child: new Text('موجودی :', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
               ),
               new Padding(
                   padding: EdgeInsets.all(5.0),
-                  child: new Text('in Stock')
+                  child: new Text('در انبار', style: new TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20))
               )
             ],
           ),
           new Divider(
-              color: Colors.red
+              color: Colors.deepPurple
           ),
-          new Text('Similar Products', style: new TextStyle(color: Colors.red),),
-          new Container(
-            height: 220,
-            child: SimilarProducts(),
-          ),
+          new Text('محصولات مشابه', style: new TextStyle(color: Colors.deepPurple),),
+//          new Container(
+//            height: 220,
+//            child: SimilarProducts(),
+//          ),
         ],
       ),
     );
@@ -292,10 +317,10 @@ class SimilarSingleProd extends StatelessWidget{
             child: InkWell(
               onTap: (){
                 return Navigator.of(context).push(new MaterialPageRoute(builder: (context) => new ProductDetails(
-                  product_detail_name: product_name,
-                  product_detail_old_price: product_old_price,
-                  product_detail_picture: product_pic,
-                  product_detail_price: product_price,
+//                  product_detail_name: product_name,
+//                  product_detail_old_price: product_old_price,
+//                  product_detail_picture: product_pic,
+//                  product_detail_price: product_price,
                 )));
               },
               child: GridTile(

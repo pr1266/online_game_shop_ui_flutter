@@ -28,3 +28,15 @@ class GetListOfGames{
   }
 }
 
+class GameDetails{
+  Future<Map> GetGame(String GameID, Map<String, String> Header) async{
+    final response = await http.get('http://10.0.2.2:8000/game/${GameID}', headers : Header);
+    var responsebody = json.decode(response.body);
+
+    return {
+      'games': responsebody
+    };
+  }
+}
+
+

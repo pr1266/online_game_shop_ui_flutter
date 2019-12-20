@@ -12,37 +12,31 @@ class HorizontalList_ extends StatelessWidget{
           new Container(
             margin: EdgeInsets.all(5),
             decoration: BoxDecoration(
-              border: Border.all(
-                width: 5,
-                color: Colors.deepPurple
-              ),
+              color: Colors.indigo,
               borderRadius: BorderRadius.all(Radius.circular(5))
             ),
 //            color: Colors.blue,
-            width: 250,
+            width: 350,
             height: MediaQuery.of(context).size.height * .4,
                 child : new Container(
                     width: 20,
                     height: 100,
-                    child:new Image.asset('assets/ps4.png',)
+                    child:new Image.asset('assets/ps4_.png',)
                 )
           ),
           new Container(
               margin: EdgeInsets.all(5),
               decoration: BoxDecoration(
-                  border: Border.all(
-                      width: 5,
-                      color: Colors.deepPurple
-                  ),
+                  color: Colors.green,
                   borderRadius: BorderRadius.all(Radius.circular(5))
               ),
 //            color: Colors.blue,
-              width: 250,
+              width: 350,
               height: MediaQuery.of(context).size.height * .4,
               child : new Container(
                   width: 20,
                   height: 100,
-                  child:new Image.asset('assets/xbox.png',)
+                  child:new Image.asset('assets/xbox_.png',)
               )
           ),
         ],
@@ -104,22 +98,18 @@ class Category extends StatelessWidget{
         child: new Container(
 
           decoration: new BoxDecoration(
-            border: Border.all(
-              color: Colors.deepPurple,
-              width: 5,
-            ),
+            color: Colors.deepPurple,
             borderRadius: BorderRadius.all(
                 Radius.circular(5.0) //         <--- border radius here
             ),
           ),
           width: 120.0,
-
             child: new SizedBox(
             child : new Container(
                 alignment: Alignment.center,
                 child: new FittedBox(
                   alignment: Alignment.center,
-                  child: new Text(image_caption, textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.0, color: Colors.deepPurple),),
+                  child: new Text(image_caption, textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.0, color: Colors.white),),
               )
             ),
           ),

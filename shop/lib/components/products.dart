@@ -79,33 +79,45 @@ class SingleProd extends StatelessWidget{
 
       height: MediaQuery.of(context).size.height * .2,
       decoration: BoxDecoration(
-          border: Border.all(
-              width: 5,
-              color: Colors.deepPurple
-          ),
+          color: Colors.deepPurple,
           borderRadius: BorderRadius.all(Radius.circular(5))
       ),
       width: 200,
       margin: const EdgeInsets.symmetric(horizontal: 1.0),
       child: new Card(
+
         //color: Colors.amberAccent,
-        child: new Wrap(
-          children: <Widget>[
-              Image.asset(
-                '',
-//                  headers: this.header,
+        child: new GestureDetector(
+          onTap: (){
+            print(this.product_name);
+            Navigator.of(context).push(new MaterialPageRoute(builder: (context) => new Directionality(textDirection: TextDirection.rtl, child: ProductDetails(prod_id: this.product_id.toString(), header: this.header,))));
+          },
+          child: new Wrap(
+            children: <Widget>[
+              new Container(
+                color: Colors.deepPurple,
+                child : Image.network(
+                  this.product_pic,
+                  headers: this.header,
+                  height: MediaQuery.of(context).size.height * .2,
+                ),
+                alignment: Alignment.center,
               ),
-            ListTile(
-              title: new Container(
-                child: new Text(this.product_name, textDirection: TextDirection.ltr,),
-                alignment: Alignment.bottomCenter,
-              ),
-              subtitle: new Container(
-                child: new Text(this.product_price, textDirection: TextDirection.ltr),
-                alignment: Alignment.bottomCenter,
-              ),
-            ),
-          ],
+              new Container(
+                color: Colors.deepPurple,
+                child: ListTile(
+                  title: new Container(
+                    child: new Text(this.product_name, textDirection: TextDirection.ltr,style: new TextStyle(color: Colors.white)),
+                    alignment: Alignment.bottomCenter,
+                  ),
+                  subtitle: new Container(
+                    child: new Text(this.product_price, textDirection: TextDirection.ltr, style: new TextStyle(color: Colors.white),),
+                    alignment: Alignment.bottomCenter,
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
