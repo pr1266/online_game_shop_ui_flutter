@@ -16,7 +16,7 @@ class HorizontalList_ extends StatelessWidget{
               borderRadius: BorderRadius.all(Radius.circular(5))
             ),
 //            color: Colors.blue,
-            width: 350,
+            width: 300,
             height: MediaQuery.of(context).size.height * .4,
                 child : new Container(
                     width: 20,
@@ -31,7 +31,7 @@ class HorizontalList_ extends StatelessWidget{
                   borderRadius: BorderRadius.all(Radius.circular(5))
               ),
 //            color: Colors.blue,
-              width: 350,
+              width: 300,
               height: MediaQuery.of(context).size.height * .4,
               child : new Container(
                   width: 20,
@@ -94,13 +94,12 @@ class Category extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new Padding(
-      padding: const EdgeInsets.all(2.0),
+      padding: const EdgeInsets.all(7.0),
         child: new Container(
-
           decoration: new BoxDecoration(
             color: Colors.deepPurple,
             borderRadius: BorderRadius.all(
-                Radius.circular(5.0) //         <--- border radius here
+                Radius.circular(15.0) //         <--- border radius here
             ),
           ),
           width: 120.0,

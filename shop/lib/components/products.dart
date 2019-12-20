@@ -80,13 +80,11 @@ class SingleProd extends StatelessWidget{
       height: MediaQuery.of(context).size.height * .2,
       decoration: BoxDecoration(
           color: Colors.deepPurple,
-          borderRadius: BorderRadius.all(Radius.circular(5))
+          borderRadius: BorderRadius.all(Radius.circular(15))
       ),
       width: 200,
-      margin: const EdgeInsets.symmetric(horizontal: 1.0),
+      margin: const EdgeInsets.symmetric(horizontal: 3.0),
       child: new Card(
-
-        //color: Colors.amberAccent,
         child: new GestureDetector(
           onTap: (){
             print(this.product_name);
