@@ -51,6 +51,7 @@ flutter:
    - assets/xbox.png
    - assets/xbox_.png
    - assets/ps4_.png
+   - assets/nintendo.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

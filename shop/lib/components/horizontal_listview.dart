@@ -13,7 +13,7 @@ class HorizontalList_ extends StatelessWidget{
             margin: EdgeInsets.all(5),
             decoration: BoxDecoration(
               color: Colors.indigo,
-              borderRadius: BorderRadius.all(Radius.circular(5))
+              borderRadius: BorderRadius.all(Radius.circular(5)),
             ),
 //            color: Colors.blue,
             width: 300,
@@ -37,6 +37,21 @@ class HorizontalList_ extends StatelessWidget{
                   width: 20,
                   height: 100,
                   child:new Image.asset('assets/xbox_.png',)
+              )
+          ),
+          new Container(
+              margin: EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.all(Radius.circular(5))
+              ),
+//            color: Colors.blue,
+              width: 300,
+              height: MediaQuery.of(context).size.height * .4,
+              child : new Container(
+                  width: 20,
+                  height: 100,
+                  child:new Image.asset('assets/nintendo.png',)
               )
           ),
         ],
@@ -98,6 +113,22 @@ class Category extends StatelessWidget{
         child: new Container(
           decoration: new BoxDecoration(
             color: Colors.deepPurple,
+              gradient: new LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                stops: [0.1,0.9],
+                colors: [
+//                  Color(0xcc2b5e),
+//                  Color(0xcc2b5e),
+//                  Color(0x753a88),
+//                  Color(0x753a88),
+                  Color.fromRGBO(202, 43, 95 , 1),
+                  Color.fromRGBO(118, 58, 136 , 1),
+//                  Colors.deepPurple[700],
+//                  Colors.green[600],
+
+                ],
+              ),
             borderRadius: BorderRadius.all(
                 Radius.circular(15.0) //         <--- border radius here
             ),
