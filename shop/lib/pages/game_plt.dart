@@ -47,18 +47,24 @@ class MyGridView extends State<GridViewState>{
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
-      appBar: new AppBar(
-        title: new Text(widget.plt),
-        backgroundColor: Colors.indigo,
-        centerTitle: true,
-      ),
-
       body: new ListView(
         children: <Widget>[
           new Container(
-            color: Colors.indigo,
+            height: MediaQuery.of(context).size.height * .02,
+          ),
+          new Container(
             height: MediaQuery.of(context).size.height * .3,
-            child: new Image.asset('assets/ps4_.png'),
+              margin: EdgeInsets.only(left: 7, right: 7),
+              decoration: new BoxDecoration(
+                color: Colors.indigo,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  border: Border.all(
+                      width: 1,
+                      color: Colors.transparent
+                  )
+              ),
+                //color: Colors.indigo,
+                child: new Image.asset(widget.plt == 'ps4' ? 'assets/ps4_.png' : null),
           ),
           new GridView.builder(
               physics: ScrollPhysics(),
@@ -87,7 +93,7 @@ class MyGridView extends State<GridViewState>{
 //                            decoration: new BoxDecoration(
 //                                borderRadius: BorderRadius.all(Radius.circular(10))
 //                            ),
-                            height: MediaQuery.of(context).size.height * .25,
+                            height: MediaQuery.of(context).size.height * .27,
                             //color: Colors.white,
                             child : Image.network(
                               'http://10.0.2.2:8000' + games[index].picture,
@@ -97,11 +103,11 @@ class MyGridView extends State<GridViewState>{
                           ),
                           new Container(
                             decoration: new BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              border: Border.all(
-                                  color: Colors.indigo,
-                                  width: 5
-                              ),
+                              //borderRadius: BorderRadius.all(Radius.circular(10)),
+//                              border: Border.all(
+//                                  color: Colors.indigo,
+//                                  width: 5
+//                              ),
                             ),
                             //color: Colors.deepPurple,
                             child: new Container(
