@@ -5,7 +5,7 @@ import 'package:shop/models/models.dart';
 
 // TODO get basic information of officer
 class GetToken{
-  Future<Map> token(Map body) async{
+  Future<Map> token(Map <String, String> body) async{
     final response = await http.post('http://10.0.2.2:8000/api-token-auth/', body: body);
     var responsebody = json.decode(response.body);
     print(responsebody);
@@ -35,6 +35,23 @@ class GameDetails{
 
     return {
       'games': responsebody
+    };
+  }
+}
+
+class GamePlatform{
+  Future<Map> GetGamePlt(String GamePlt, Map<String, String> Header) async{
+    var data = {
+      'plt': GamePlt
+    };
+    final response = await http.post('http://10.0.2.2:8000/pltGame/', headers : Header, body : data);
+    var responsebody = json.decode(response.body);
+    List<Games> games = [];
+    responsebody.forEach((item){
+      games.add(Games.fromJson(item));
+    });
+    return {
+      'games': games
     };
   }
 }

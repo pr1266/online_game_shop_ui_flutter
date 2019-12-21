@@ -13,7 +13,6 @@ class ProductState extends State<Products>{
   var Header;
   getData() async{
     var token = await(GetToken().token({"username": "admin", "password": "admin"}));
-    print(token['token']);
     var header = {
       'Authorization' : 'JWT ${token['token']}'
     };
@@ -76,7 +75,6 @@ class SingleProd extends StatelessWidget{
     print('this.header');
     print(product_pic);
     return new Container(
-
       height: MediaQuery.of(context).size.height * .2,
       decoration: BoxDecoration(
           color: Colors.deepPurple,

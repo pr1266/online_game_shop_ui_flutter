@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:shop/main.dart';
 import 'package:shop/services/games.dart';

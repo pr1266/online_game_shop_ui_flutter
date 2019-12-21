@@ -3,9 +3,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:shop/components/horizontal_listview.dart';
 import 'package:shop/components/products.dart';
 import 'package:shop/pages/cart.dart';
-//import 'package:shop/components/products_2.dart';
-
-
+import 'package:shop/services/games.dart';
 
 void main(){
   runApp(new MyApp());

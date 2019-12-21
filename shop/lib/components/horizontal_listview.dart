@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shop/pages/game_plt.dart';
+import 'package:shop/services/games.dart';
 
 class HorizontalList_ extends StatelessWidget{
   @override
@@ -9,20 +11,25 @@ class HorizontalList_ extends StatelessWidget{
       child: new ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          new Container(
-            margin: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              color: Colors.indigo,
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-            ),
+          new GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> new GridViewState(plt: 'ps4',)));
+            },
+            child: new Container(
+                margin: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Colors.indigo,
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                ),
 //            color: Colors.blue,
-            width: 300,
-            height: MediaQuery.of(context).size.height * .4,
+                width: 300,
+                height: MediaQuery.of(context).size.height * .4,
                 child : new Container(
                     width: 20,
                     height: 100,
                     child:new Image.asset('assets/ps4_.png',)
                 )
+            ),
           ),
           new Container(
               margin: EdgeInsets.all(5),
