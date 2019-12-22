@@ -31,39 +31,48 @@ class HorizontalList_ extends StatelessWidget{
                 )
             ),
           ),
-          new Container(
-              margin: EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.all(Radius.circular(5))
-              ),
-//            color: Colors.blue,
-              width: 300,
-              height: MediaQuery.of(context).size.height * .4,
-              child : new Container(
-                  width: 20,
-                  height: 100,
-                  child:new Image.asset('assets/xbox_.png',)
-              )
+          new GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> new GridViewState(plt: 'xbox',)));
+              },
+            child : new Container(
+                margin: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.all(Radius.circular(5))
+                ),
+  //            color: Colors.blue,
+                width: 300,
+                height: MediaQuery.of(context).size.height * .4,
+                child : new Container(
+                    width: 20,
+                    height: 100,
+                    child:new Image.asset('assets/xbox_.png',)
+                ),
+            ),
           ),
-          new Container(
-              margin: EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.all(Radius.circular(5))
-              ),
-//            color: Colors.blue,
-              width: 300,
-              height: MediaQuery.of(context).size.height * .4,
+            new GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> new GridViewState(plt: 'nintendo',)));
+              },
               child : new Container(
-                  width: 20,
-                  height: 100,
-                  child:new Image.asset('assets/nintendo.png',)
-              )
-          ),
+                margin: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.all(Radius.circular(5))
+                ),
+  //            color: Colors.blue,
+                width: 300,
+                height: MediaQuery.of(context).size.height * .4,
+                child : new Container(
+                    width: 20,
+                    height: 100,
+                    child:new Image.asset('assets/nintendo.png',)
+                )
+            ),
+          )
         ],
-      ),
-
+      )
     );
   }
 }

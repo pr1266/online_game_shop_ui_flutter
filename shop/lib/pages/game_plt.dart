@@ -46,7 +46,7 @@ class MyGridView extends State<GridViewState>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
       body: new ListView(
         children: <Widget>[
           new Container(
@@ -56,7 +56,7 @@ class MyGridView extends State<GridViewState>{
             height: MediaQuery.of(context).size.height * .3,
               margin: EdgeInsets.only(left: 7, right: 7),
               decoration: new BoxDecoration(
-                color: Colors.indigo,
+                color: widget.plt == 'ps4' ? Colors.indigo : widget.plt == 'xbox' ? Colors.green : Colors.red,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   border: Border.all(
                       width: 1,
@@ -64,7 +64,7 @@ class MyGridView extends State<GridViewState>{
                   )
               ),
                 //color: Colors.indigo,
-                child: new Image.asset(widget.plt == 'ps4' ? 'assets/ps4_.png' : null),
+                child: new Image.asset(widget.plt == 'ps4' ? 'assets/ps4_.png' : widget.plt == 'xbox' ? 'assets/xbox_.png' : 'assets/nintendo.png'),
           ),
           new GridView.builder(
               physics: ScrollPhysics(),
@@ -94,10 +94,15 @@ class MyGridView extends State<GridViewState>{
 //                                borderRadius: BorderRadius.all(Radius.circular(10))
 //                            ),
                             height: MediaQuery.of(context).size.height * .27,
+
                             //color: Colors.white,
-                            child : Image.network(
-                              'http://10.0.2.2:8000' + games[index].picture,
-                              headers: widget.header,
+                            child : new FittedBox(
+                              child : Image.network(
+                                'http://10.0.2.2:8000' + games[index].picture,
+                                headers: widget.header,
+                                fit: BoxFit.fitWidth,
+//                              width: MediaQuery.of(context).size.width * .7,
+                              ),
                             ),
                             alignment: Alignment.center,
                           ),

@@ -77,8 +77,12 @@ class SingleProd extends StatelessWidget{
     return new Container(
       height: MediaQuery.of(context).size.height * .2,
       decoration: BoxDecoration(
-          color: Colors.deepPurple,
-          borderRadius: BorderRadius.all(Radius.circular(15))
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(15)),
+        border: Border.all(
+          width: 5,
+          color: Colors.deepPurple
+        )
       ),
       width: 200,
       margin: const EdgeInsets.symmetric(horizontal: 3.0),
@@ -91,7 +95,7 @@ class SingleProd extends StatelessWidget{
           child: new Wrap(
             children: <Widget>[
               new Container(
-                color: Colors.deepPurple,
+                color: Colors.white,
                 child : Image.network(
                   this.product_pic,
                   headers: this.header,
@@ -100,14 +104,14 @@ class SingleProd extends StatelessWidget{
                 alignment: Alignment.center,
               ),
               new Container(
-                color: Colors.deepPurple,
+                color: Colors.white,
                 child: ListTile(
                   title: new Container(
-                    child: new Text(this.product_name, textDirection: TextDirection.ltr,style: new TextStyle(color: Colors.white)),
+                    child: new Text(this.product_name, textDirection: TextDirection.ltr,style: new TextStyle(color: Colors.deepPurple)),
                     alignment: Alignment.bottomCenter,
                   ),
                   subtitle: new Container(
-                    child: new Text(this.product_price, textDirection: TextDirection.ltr, style: new TextStyle(color: Colors.white),),
+                    child: new Text(this.product_price, textDirection: TextDirection.ltr, style: new TextStyle(color: Colors.deepPurple),),
                     alignment: Alignment.bottomCenter,
                   ),
                 ),
